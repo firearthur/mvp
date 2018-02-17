@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server-dev" : "nodemon server/app.js"
-
+    "server-dev": "nodemon server/app.js",
+    "react-dev": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "request": "^2.83.0",
-    "router": "^1.3.2"
+    "router": "^1.3.2",
+    "webpack": "^3.11.0"
   }
 }
