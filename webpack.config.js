@@ -1,5 +1,5 @@
 var path = require('path');
-var SRC_DIR = path.join(__dirname, '/client/index.jsx'); //the first react index.js 
+var SRC_DIR = path.join(__dirname, '/client/'); //the first react index.js 
 var DIST_DIR = path.join(__dirname, '/client/dist'); //bundle.js where it lives
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
         include : SRC_DIR,
         loader : 'babel-loader',      
         query: {
-          presets: ['react', 'es2015']
+          presets: ['react', 'es2015','env']
         }
       }
     ]
