@@ -13,10 +13,10 @@ class App extends React.Component {
       this.setPlaces = this.setPlaces.bind(this);
     }
     
-    setPlaces(){
+    setPlaces(term){
       let thisComponent = this;
       console.log('i ran inside of set places');
-      aj.get((places)=>{
+      aj.get(term, (places)=>{
         thisComponent.setState({places:places});
       });
     } 

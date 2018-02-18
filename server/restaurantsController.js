@@ -8,15 +8,16 @@ const model = require('./model');
 
 const controller = {
     get: (req, res) => {
+      console.log('req query !!!!', req.query);
       if(req.body){  
-      console.log('request !!!!!!!!!!! from get', req.query.name);  
+      console.log('request !!!!!!!!!!! from get', req.body);  
       
-    //   model.getRestaurantsFromDb(req.body.name, (err,data)=>{
-        model.getRestaurantsFromDb(req.query.name, (data, err)=>{
+      model.getRestaurantsFromDb(req.query.keyWord, (data, err)=>{
+        // model.getRestaurantsFromDb(req.query.name, (data, err)=>{
           if(err){
             console.log('err at restaurantController line 17' ,err);  
           }
-          console.log('request !!!!!!!!!!!', req.query.name);
+          console.log('request !!!!!!!!!!!', req.body);
           console.log('this is the restaurants but the name of var is data', data);
           res.send(data);
         });
