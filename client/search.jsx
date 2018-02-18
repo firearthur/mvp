@@ -18,7 +18,7 @@ class Search extends React.Component {
       this.setState({searchKeyWord:place});
     }
     search(){
-      // console.log('hey');
+     
       aj.post(this.state.searchKeyWord, this.props.onSearch);
     }
 
