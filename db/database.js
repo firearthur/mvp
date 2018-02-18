@@ -17,9 +17,9 @@ const restaurantSchema = mongoose.Schema({
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
-Restaurant.remove({}, function(err) { //dropping database
-  console.log('collection removed') 
-});
+// Restaurant.remove({}, function(err) { //dropping database
+//   console.log('collection removed') 
+// });
 
 // //test record
 // const test = new Restaurant({_id: 1, name:'Pizza rest', address:'123', stars: 4});

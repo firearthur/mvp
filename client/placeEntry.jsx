@@ -6,7 +6,7 @@ class PlaceEntry extends React.Component {
     return (
         <div>
           <h3>{this.props.place.name}</h3>
-          <span>{this.props.place.rating}</span>
+          <span>{`Rating: ${this.props.place.stars}`}</span>
           <p>{this.props.place.address}</p>
         </div>
       );
