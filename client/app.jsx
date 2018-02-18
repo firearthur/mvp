@@ -1,6 +1,10 @@
-import { Component } from "react";
+// import { Component } from "react";
+import React from "react";
+import Search from './search.jsx';
+import PlacesList from './placesList.jsx';
+const {aj} = require('./mapsAPI.js');
 
-class App extends Component {
+class App extends React.Component {
     constructor(props){
       super(props);
       this.state = {
@@ -9,8 +13,12 @@ class App extends Component {
       this.setPlaces = this.setPlaces.bind(this);
     }
     
-    setPlaces(places){
-       this.setState({places:places});
+    setPlaces(){
+      let thisComponent = this;
+      console.log('i ran inside of set places');
+      aj.get((places)=>{
+        thisComponent.setState({places:places});
+      });
     } 
 
     render() {
@@ -23,3 +31,5 @@ class App extends Component {
       );
     }
   }
+
+  export default App;

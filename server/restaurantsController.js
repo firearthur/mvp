@@ -7,21 +7,32 @@ const model = require('./model');
 
 
 const controller = {
-    get: (req, res, place, callback) => {
+    get: (req, res) => {
+      if(req.body){  
+      console.log('request !!!!!!!!!!! from get', req.query.name);  
       
+    //   model.getRestaurantsFromDb(req.body.name, (err,data)=>{
+        model.getRestaurantsFromDb(req.query.name, (data, err)=>{
+          if(err){
+            console.log('err at restaurantController line 17' ,err);  
+          }
+          console.log('request !!!!!!!!!!!', req.query.name);
+          console.log('this is the restaurants but the name of var is data', data);
+          res.send(data);
+        });
+      } 
     },
     post: (req, res) => {
-        const place = req.body.name;
+        const place = req.body.keyWord || req.body.name;
         const SERVER = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=33.9759755,-118.39088770000001&radius=1200&type=restaurant&keyword=${place}&key=${KEY}`;
+        console.log('here is the place!!!!', place);
         request(SERVER, function (error, response, body) { // ask google api for the places on a post request
-            const restaurants = JSON.parse(response.body);
-            console.log('error at restaurantsController request block', error); 
-           
-            // when you get them send them to the model to save them with a callback
-            // -to start the get request when its done saving        
+            const restaurants = JSON.parse(response.body);  
             model.saveRestaurantsToDb(restaurants, place,(err, data)=>{
             //   callback();
-              res.send(data);
+            
+              res.sendStatus(201);
+            //   res.send(data);
             });
             
         });

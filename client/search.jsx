@@ -1,17 +1,25 @@
-import { Component } from "react";
+// import { Component } from "react";
+import React from "react";
+const {aj} = require('./mapsAPI.js');
 
-class Search extends Component {
+class Search extends React.Component {
     constructor(props){
       super(props);
       this.state = {
           searchKeyWord : ''
       }
       this.search = this.search.bind(this);
+      this.onChange = this.onChange.bind(this);
     }
+    
 
-    search(event){
+    onChange(event){
       let place = event.target.value;
-      this.props.onSearch(); //check this part  
+      this.setState({searchKeyWord:place});
+    }
+    search(){
+      console.log('hey');
+      aj.post(this.state.searchKeyWord, this.props.onSearch);
     }
 
     render() {
@@ -19,11 +27,13 @@ class Search extends Component {
         <div>
           <form action="">  
             <label>Place: 
-              <input type="text" value = {this.state.searchKeyWord} onChange={this.search}/>
+              <input type="text" value = {this.state.searchKeyWord} onChange={this.onChange}/>
             </label>
-            <input type="submit" value="Submit" />
+            <button type ="button" onClick = {this.search}>Search</button>
           </form> 
         </div>
       );
     }
   }
+
+  export default Search;  

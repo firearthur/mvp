@@ -1,4 +1,6 @@
 import {Component} from 'react';
+import PlaceEntry from './placeEntry.jsx';
+
 class PlacesList extends Component {
 
     render(){
@@ -10,3 +12,5 @@ class PlacesList extends Component {
         );
     }
 }
+
+export default PlacesList;

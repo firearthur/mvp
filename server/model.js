@@ -1,11 +1,14 @@
 const db = require('../db/database');
 
 const getRestaurantsFromDb = (restaurant, callback)=>{ //give restaurants back from db
+  console.log('this is restaurant from model', restaurant);
   db.getRestauransts(restaurant, (err, restaurants)=>{ 
+    console.log('this is restaurant from model 2', restaurant);
       if(err){
-        throw err;
+        console.log('error at model', err);
       }
       if(restaurants){
+        console.log('these are the restaus i got from query', restaurants);
         callback(restaurants);
       }
   });

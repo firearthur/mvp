@@ -1,6 +1,7 @@
-import { Component } from "react";
+// import { Component } from "react";
+import React from "react";
 
-class PlaceEntry extends Component {
+class PlaceEntry extends React.Component {
     render() {
     return (
         <div>
@@ -11,3 +12,5 @@ class PlaceEntry extends Component {
       );
     }
   }
+
+  export default PlaceEntry;

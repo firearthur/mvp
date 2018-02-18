@@ -17,15 +17,15 @@ const restaurantSchema = mongoose.Schema({
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
-// Restaurant.remove({}, function(err) { //dropping database
-//   console.log('collection removed') 
-// });
+Restaurant.remove({}, function(err) { //dropping database
+  console.log('collection removed') 
+});
 
 // //test record
 // const test = new Restaurant({_id: 1, name:'Pizza rest', address:'123', stars: 4});
 // test.save();
 
-const save = (restaurants, searchKeyWord,callback) => {
+const save = (restaurants, searchKeyWord, callback) => {
   // console.log('!!!!!', restaurants);
   
   const restaurantModels = restaurants.map((restaurant)=>{
@@ -37,7 +37,7 @@ const save = (restaurants, searchKeyWord,callback) => {
       keyWord: searchKeyWord
     });
   });
-  console.log('the damn array',restaurantModels);
+  // console.log('the damn array',restaurantModels);
   Restaurant.insertMany(restaurantModels, {ordered:false},(err, data)=>{ //ask about ordered
     if(err){
       console.log('err at database.js while saving',err);
@@ -58,8 +58,8 @@ const getRestauransts = (restaurant, callback) =>{
   Restaurant.
   find({}).
   where('keyWord').equals(restaurant).   //not sure if it's gonna work
-  limit(5).
   sort('-stars').
+  limit(5).
   select('').
   exec(callback);
 };
